@@ -10,13 +10,13 @@ export default function Navbar(props) {
         var lDropdownItems = [];
         var dropdownItem;
         if (props.teams) {
-            props.teams.forEach((team, i) => (
+            props.teams.forEach((team, i) => {
                 dropdownItem = {
                     key: i,
-                    label: (<a rel="noopener noreferrer" href={`/${team}`}>{team}</a>),
-                },
+                    label: (<a rel="noopener noreferrer" href={`/teams/${team}`}>{team.replaceAll("_", " ")}</a>),
+                }
                 lDropdownItems.push(dropdownItem)
-            ))
+            })
         }
         lDropdownItems = <Menu items={lDropdownItems} />
         setDropdownItems(lDropdownItems);
@@ -26,7 +26,7 @@ export default function Navbar(props) {
     const DropdownMenu = () => {
         return (
             <Dropdown key="more" overlay={dropdownItems} placement="bottomRight">
-                <Button>Teams</Button>
+                <Button type="primary">Teams</Button>
             </Dropdown>
         )
     }
